@@ -96,6 +96,11 @@ public class SelectController : MonoBehaviour
 
             foreach (var hit in hits)
             {
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    continue;
+                }
+
                 players.Add(hit.transform.gameObject);
                 hit.transform.GetChild(0).gameObject.SetActive(true);
             }

@@ -21,6 +21,7 @@ public class PlaceObjects : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            gameObject.GetComponent<BattleMachineAutocreate>().enabled = true;
             Destroy(gameObject.GetComponent<PlaceObjects>());
         }
 
