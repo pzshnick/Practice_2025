@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class SelectController : MonoBehaviour
 {
@@ -17,9 +18,32 @@ public class SelectController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(1) && players.Count > 0)
+        {
+            Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit agentTarget, 1000f, layer))
+            {
+                foreach (var el in players)
+                {
+                    el.GetComponent<NavMeshAgent>().SetDestination(agentTarget.point);
+                }
+            }
+        }
+
         // Start of object selection on the map
         if (Input.GetMouseButtonDown(1))
         {
+            /*
+                The health status element, which is the 
+                first child of the car prefab, becomes 
+                active to indicate that it is selected 
+            */
+            foreach (var el in players)
+            {
+                el.transform.GetChild(0).gameObject.SetActive(false);
+            }
+
             players.Clear();
 
             Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
@@ -73,6 +97,7 @@ public class SelectController : MonoBehaviour
             foreach (var hit in hits)
             {
                 players.Add(hit.transform.gameObject);
+                hit.transform.GetChild(0).gameObject.SetActive(true);
             }
 
             Destroy(_cubeSelection);
