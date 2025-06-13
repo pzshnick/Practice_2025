@@ -10,6 +10,11 @@ public class PlaceObjects : MonoBehaviour
         PositionObject();
     }
 
+    /*
+        The scenes of object positioning, rotation, and alignment 
+        with the mouse ray are updated every frame — that’s exactly 
+        why the Update() method is used.
+    */
     private void Update()
     {
         PositionObject();
@@ -25,6 +30,14 @@ public class PlaceObjects : MonoBehaviour
         }
     }
 
+    /*
+        Using a ray (cast from the camera to the mouse pointer) 
+        to accurately position an object on a specified layer (Ground) 
+
+        Physics.Raycast(ray, out hit, 1000f, layer) is a check 
+        to see if the ray hits an object on the specified layer 
+        within a distance of up to 1000 units.
+    */
     private void PositionObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
