@@ -41,7 +41,10 @@ public class SelectController : MonoBehaviour
             */
             foreach (var el in players)
             {
-                el.transform.GetChild(0).gameObject.SetActive(false);
+                if (el != null)
+                {
+                    el.transform.GetChild(0).gameObject.SetActive(false);
+                }
             }
 
             players.Clear();
@@ -60,8 +63,8 @@ public class SelectController : MonoBehaviour
             Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hitDrag, 1000f, layer))
             {
-                float scaleX = (_hit.point.x - hitDrag.point.x) * -1;
-                float scaleZ = _hit.point.z - hitDrag.point.z;
+                float scaleX = Mathf.Abs((_hit.point.x - hitDrag.point.x) * -1);
+                float scaleZ = Mathf.Abs(_hit.point.z - hitDrag.point.z);
 
                 if (scaleX < 0.0f && scaleZ < 0.0f)
                 {
@@ -80,7 +83,7 @@ public class SelectController : MonoBehaviour
                     _cubeSelection.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 }
 
-                _cubeSelection.transform.localScale = new Vector3(Mathf.Abs(scaleX), 0.6f, Mathf.Abs(scaleZ));
+                _cubeSelection.transform.localScale = new Vector3(scaleX, 0.6f, scaleZ);
             }
         }
 
