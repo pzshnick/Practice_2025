@@ -34,6 +34,8 @@ public class Rain : MonoBehaviour
      */
     private void Start()
     {
+        if (!StartGame.IsGameStarted) return;
+
         _ps = GetComponent<ParticleSystem>();
         StartCoroutine(Weather());
     }
@@ -45,6 +47,8 @@ public class Rain : MonoBehaviour
     */
     private void Update()
     {
+        if (!StartGame.IsGameStarted) return;
+
         if (_isRain && directionalLight.intensity > weatherMinLightVal)
         {
             LightIntensity(-1);

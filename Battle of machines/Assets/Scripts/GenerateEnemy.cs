@@ -8,6 +8,7 @@ public class GenerateEnemy : MonoBehaviour
 
     private void Start()
     {
+        if (!StartGame.IsGameStarted) return;
         StartCoroutine(SpawnFactory()); 
     }
 

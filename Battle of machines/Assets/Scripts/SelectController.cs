@@ -18,6 +18,8 @@ public class SelectController : MonoBehaviour
 
     private void Update()
     {
+        if (!StartGame.IsGameStarted) return;
+
         if (Input.GetMouseButtonDown(1) && players.Count > 0)
         {
             Ray ray = _cam.ScreenPointToRay(Input.mousePosition);

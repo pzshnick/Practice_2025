@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     // Render the current object (camera) every frame
     private void Update()
     {
+        if (!StartGame.IsGameStarted) return;
+
         // 'A' or 'D' keys and <- or -> tracking
         float horizontal = Input.GetAxis("Horizontal");
 
