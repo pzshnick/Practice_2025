@@ -8,12 +8,13 @@ public class GenerateEnemy : MonoBehaviour
 
     private void Start()
     {
-        if (!StartGame.IsGameStarted) return;
         StartCoroutine(SpawnFactory()); 
     }
 
     IEnumerator SpawnFactory()
     {
+        yield return new WaitUntil(() => StartGame.IsGameStarted);
+
         for (int i = 0; i < points.Length; i++)
         {
             yield return new WaitForSeconds(10f);

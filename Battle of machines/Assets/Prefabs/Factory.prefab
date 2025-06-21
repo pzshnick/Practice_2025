@@ -167,3 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 4407924417321333903, guid: e0afdb5e6932dfa45b58911ed9445343, type: 3}
   time: 5
+  MachinesCount: {fileID: 0}
+  EnemiesCount: {fileID: 0}

@@ -34,8 +34,6 @@ public class Rain : MonoBehaviour
      */
     private void Start()
     {
-        if (!StartGame.IsGameStarted) return;
-
         _ps = GetComponent<ParticleSystem>();
         StartCoroutine(Weather());
     }
@@ -70,7 +68,9 @@ public class Rain : MonoBehaviour
     */
     IEnumerator Weather()
     {
-        while(true)
+        yield return new WaitUntil(() => StartGame.IsGameStarted);
+
+        while (true)
         {
             yield return new WaitForSeconds(UnityEngine.Random.Range(10f, 20f));
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleMachineAutocreate : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class BattleMachineAutocreate : MonoBehaviour
 
     IEnumerator SpawnCar()
     {
+        yield return new WaitUntil(() => StartGame.IsGameStarted);
+
         for (int i = 1; i <= 3; i++)
         {
             /*
@@ -33,6 +37,11 @@ public class BattleMachineAutocreate : MonoBehaviour
             if (isEnemy)
             {
                 spawn.tag = "Enemy";
+                Interlocked.Increment(ref StartGame.enemies);
+            }
+            else
+            {
+                Interlocked.Increment(ref StartGame.machines);
             }
         }
     }

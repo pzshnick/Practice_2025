@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -34,6 +35,20 @@ public class BulletController : MonoBehaviour
 
             if (attack._health <= 0)
             {
+                if (other.CompareTag("Enemy"))
+                {
+                    if (StartGame.enemies > 0)
+                    {
+                        Interlocked.Decrement(ref StartGame.enemies);
+                    }    
+                }
+                else
+                {
+                    if (StartGame.machines > 0)
+                    {
+                        Interlocked.Decrement(ref StartGame.machines);
+                    }     
+                }
                 Destroy(other.gameObject);
             }
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ButtonPlaceBuilding : MonoBehaviour
@@ -11,6 +12,10 @@ public class ButtonPlaceBuilding : MonoBehaviour
     // Set the called object on the map
     public void PlaceBuild()
     {
-        Instantiate(building, Vector3.zero, Quaternion.identity);
+        if (StartGame.shelters > 0)
+        {
+            Instantiate(building, Vector3.zero, Quaternion.identity);
+            StartGame.shelters = StartGame.shelters - 1;
+        }
     }
 }
