@@ -9,7 +9,7 @@ public class BattleMachineAutocreate : MonoBehaviour
     [NonSerialized]
     public bool isEnemy = false;
     public GameObject car;
-    public float time = 5f;
+    public float time = 2f;
 
     private void Start()
     {

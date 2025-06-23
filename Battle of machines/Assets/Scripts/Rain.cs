@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.HighDefinition;
 
 public class Rain : MonoBehaviour
 {
