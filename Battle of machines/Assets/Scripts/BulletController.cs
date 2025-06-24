@@ -39,6 +39,9 @@ public class BulletController : MonoBehaviour
                 {
                     if (StartGame.enemies > 0)
                     {
+                        int coins = PlayerPrefs.GetInt("Coins") + 5;
+                        PlayerPrefs.SetInt("Coins", coins);
+                        StartGame.coins = coins;
                         Interlocked.Decrement(ref StartGame.enemies);
                     }    
                 }

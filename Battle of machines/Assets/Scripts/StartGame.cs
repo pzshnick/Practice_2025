@@ -33,13 +33,15 @@ public class StartGame : MonoBehaviour
 
     public Text MachinesCount,
                 EnemiesCount,
-                SheltersCount;
+                SheltersCount,
+                CoinsCount;
 
     public Text GameEndText;
 
     public static int shelters;
     public static int machines = 0;
     public static int enemies = 0;
+    public static int coins = 0;
 
     private GameEnd gameEnd;
 
@@ -59,6 +61,7 @@ public class StartGame : MonoBehaviour
             shelters = 2;
             machines = 0;
             enemies = 0;
+            coins = PlayerPrefs.GetInt("Coins");
 
             StartCoroutine(UpdateUI());
         }
@@ -118,6 +121,7 @@ public class StartGame : MonoBehaviour
             MachinesCount.text = machines.ToString();
             EnemiesCount.text = enemies.ToString();
             SheltersCount.text = shelters.ToString();
+            CoinsCount.text = coins.ToString();
 
             if (IsBattleStarted)
             {
